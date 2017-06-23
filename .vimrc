@@ -20,6 +20,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
 " Themes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
