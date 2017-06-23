@@ -59,9 +59,10 @@ cnoremap <C-A> <home>
 cnoremap <C-E> <end>
 cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
 
-" Make search result appear in the middle of the screen
+" Make highlighted search result appear in the middle of the screen
 :nnoremap n nzz
 :nnoremap N Nzz
+set hlsearch
 
 " Remapping switch between panes
 nnoremap <C-J> <C-W><C-J>
@@ -78,6 +79,11 @@ au BufNewFile,BufRead *.js,*.ts,*.jsx set expandtab tabstop=2 autoindent shiftwi
 au BufNewFile,BufRead *.css,*.scss set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
 au BufNewFile,BufRead *.html set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
 au BufNewFile,BufRead *.slim set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
+
+" Colorscheme and highlighting
+set background=dark
+colorscheme gruvbox
+highlight htmlTagName cterm=NONE ctermfg=red
 
 " Nerdtree remapping
 nmap <silent> <C-N> :NERDTreeToggle<CR>
@@ -97,7 +103,3 @@ let g:ctrlp_custom_ignore = {
 			\ }
 " Set CtrlP working directory to follow vim current directory
 let g:ctrlp_working_path_mode = 0
-
-set background=dark
-colorscheme gruvbox
-
