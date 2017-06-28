@@ -45,6 +45,8 @@ set number
 filetype plugin indent on    " required
 syntax on
 syntax enable
+" Remove auto-commenting
+set formatoptions-=cro
 
 " Remapping leader key
 let mapleader = ","
@@ -56,6 +58,9 @@ map <leader>ai mzgg=G`z
 noremap <silent> zz <C-S>:update<CR>
 vnoremap <silent> zz <C-S><C-C>:update<CR>
 inoremap <silent> zz <C-O>:update<CR>
+" Remapping folds
+nnoremap <space> za
+vnoremap <space> zf
 
 " Emacs :P
 inoremap <C-A> <Esc>I
