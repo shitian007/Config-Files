@@ -6,6 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
+
+" Prevent locale error message for Ack
+language en_US.UTF-8
 " let Vundle manage Vundle, required
 call vundle#begin()
 
@@ -27,6 +30,7 @@ Plugin 'morhetz/gruvbox'
 " File managers
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
 " Front-End
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim.git'
