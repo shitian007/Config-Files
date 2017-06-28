@@ -90,6 +90,9 @@ set background=dark
 colorscheme gruvbox
 highlight htmlTagName cterm=NONE ctermfg=red
 
+" Ack remapping
+map <leader>ff :Ack<space>-i<space>
+
 " Nerdtree remapping
 nmap <silent> <C-N> :NERDTreeToggle<CR>
 
