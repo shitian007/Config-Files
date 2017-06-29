@@ -118,6 +118,9 @@ set background=dark
 colorscheme gruvbox
 highlight htmlTagName cterm=NONE ctermfg=red
 
+" Disable quickfixline highlighting
+highlight! link QuickFixLine Normal
+
 " Warn for whitespace and clear whitespace
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
