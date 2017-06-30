@@ -26,18 +26,21 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 " Themes
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 " File managers
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 " Front-End
+Plugin 'Valloric/MatchTagAlways'
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim.git'
 " Python
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'hdima/python-syntax'
+" LaTeX
+Plugin 'lervag/vimtex' "Latexmk required | Make sure content present before autocompile
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,7 +51,7 @@ filetype plugin indent on    " required
 syntax on
 syntax enable
 " Remove auto-commenting
-set formatoptions-=cro
+autocmd BufNewFile,BufRead * setlocal formatoptions-=r
 " Save folds
 augroup remember_folds
 	autocmd!
