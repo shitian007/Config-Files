@@ -35,8 +35,8 @@ Plugin 'mileszs/ack.vim'
 " Front-End
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim.git'
-" Latex (start vim with --servername name)
-Plugin 'lervag/vimtex'
+" LaTeX
+Plugin 'lervag/vimtex' "latexmk required | Ensure text output before autocompilation
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
