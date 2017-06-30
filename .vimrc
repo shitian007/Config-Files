@@ -35,9 +35,8 @@ Plugin 'mileszs/ack.vim'
 " Front-End
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim.git'
-" Python
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'hdima/python-syntax'
+" Latex (start vim with --servername name)
+Plugin 'lervag/vimtex'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
