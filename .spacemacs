@@ -303,6 +303,7 @@ values."
 
 (defun dotspacemacs/user-config ()
   (setq typescript-indent-level 2)
+  (setq css-indent-offset 2)
   (global-git-gutter+-mode)
   )
 
