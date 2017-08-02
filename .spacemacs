@@ -302,6 +302,7 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
+  (linum-relative-global-mode t)
   (global-git-gutter+-mode)
   (setq typescript-indent-level 2)
   ; HTML/CSS
