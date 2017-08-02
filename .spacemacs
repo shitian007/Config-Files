@@ -302,9 +302,15 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
-  (setq typescript-indent-level 2)
-  (setq css-indent-offset 2)
   (global-git-gutter+-mode)
+  (setq typescript-indent-level 2)
+  ; HTML/CSS
+  (setq-default
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
