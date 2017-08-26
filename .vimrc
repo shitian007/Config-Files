@@ -75,7 +75,6 @@ map <leader>ai mzgg=G`z
 " Save
 noremap <silent> <leader>fs <C-S>:update<CR>
 vnoremap <silent> <leader>fs <C-S><C-C>:update<CR>
-inoremap <silent> <leader>fs <C-O>:update<CR>
 " Pasting from yank register
 nnoremap <leader>p "0p
 " Folds
