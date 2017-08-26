@@ -35,14 +35,21 @@ Plugin 'mileszs/ack.vim'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim.git'
+Plugin 'HerringtonDarkholme/yats.vim'
 " Python
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'hdima/python-syntax'
-" LaTeX
-Plugin 'lervag/vimtex' "latexmk required | Ensure text output before autocompilation
+" Latex
+Plugin 'lervag/vimtex' "Latexmk required | Make sure content present before autocompile
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" Colorscheme and highlighting
+set background=dark
+colorscheme gruvbox
+highlight htmlTagName cterm=NONE ctermfg=red
 
 " Syntax/Folding/Autocommenting
 set number
@@ -60,15 +67,15 @@ augroup END
 
 " Remappings
 " Leader
-let mapleader = ","
+let mapleader = " "
 " Autoindentation
 map <leader>ai mzgg=G`z
 " <Esc> key remap in insert mode
-:imap jj <Esc>
+:imap fd <Esc>
 " Save
-noremap <silent> zz <C-S>:update<CR>
-vnoremap <silent> zz <C-S><C-C>:update<CR>
-inoremap <silent> zz <C-O>:update<CR>
+noremap <silent> <leader>fs <C-S>:update<CR>
+vnoremap <silent> <leader>fs <C-S><C-C>:update<CR>
+inoremap <silent> <leader>fs <C-O>:update<CR>
 " Pasting from yank register
 nnoremap <leader>p "0p
 " Folds
@@ -90,7 +97,7 @@ nnoremap <C-H> <C-W><C-H>
 set tabstop=4
 au BufNewFile,BufRead *.py set softtabstop=4 shiftwidth=4 textwidth=79 autoindent
 au BufNewFile,BufRead *.php set softtabstop=4 shiftwidth=4 textwidth=79 autoindent
-au BufNewFile,BufRead *.js,*.ts,*.jsx set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
+au BufNewFile,BufRead *.js,*.jsx set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
 au BufNewFile,BufRead *.css,*.scss set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
 au BufNewFile,BufRead *.html set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
 au BufNewFile,BufRead *.slim set expandtab tabstop=2 autoindent shiftwidth=2 autoindent
@@ -115,10 +122,6 @@ let g:ctrlp_working_path_mode = 0
 :nnoremap N Nzz
 set hlsearch
 
-" Colorscheme and highlighting
-set background=dark
-colorscheme gruvbox
-highlight htmlTagName cterm=NONE ctermfg=red
 
 " Disable quickfixline highlighting
 highlight! link QuickFixLine Normal
@@ -129,3 +132,5 @@ autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
 nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
+
+inoremap <C-B> <ESC>YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>ko
