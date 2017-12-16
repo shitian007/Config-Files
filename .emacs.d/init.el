@@ -1,10 +1,12 @@
 ;; General settings
-(setq inhibit-startup-message 1) ; Inhibit startup message
-(setq initial-scratch-message "Scratch Buffer") ; print a default message in t
 (tool-bar-mode -1) ; Remove top toolbar
 (toggle-scroll-bar -1) ; Remove scrollbar
-(global-linum-mode 1) ; global linum mode
-(show-paren-mode 1) ; Matching braces
+(desktop-save-mode 1) ; Save session
+(global-linum-mode 1) ; Global linum mode
+(setq inhibit-startup-message 1) ; Inhibit startup message
+(setq initial-scratch-message "Scratch Buffer") ; print a default message in t
+(setq show-trailing-whitespace t) ; Highlight trailing whitespace
+(setq save-interprogram-paste-before-kill t) ; Save clipboard content to kill-ring
 
 ;; Package setup
 (require 'package)
@@ -19,7 +21,6 @@
 ;; Appearance
 (use-package smart-mode-line :ensure t
   :config
-  (sml/setup)
   (setq sml/theme 'respectful)
   )
 (use-package rainbow-delimiters :ensure t
@@ -49,7 +50,7 @@
   :init
   (setq evil-want-C-u-scroll t) ; Override C-u to scroll up
   :config
-  (setcdr evil-insert-state-map nil) ; Emacs controls in insert mode 
+  (setcdr evil-insert-state-map nil) ; Emacs controls in insert mode
   (evil-mode 1))
 
 (use-package evil-escape :ensure t
@@ -70,6 +71,7 @@
     ;; basic
     "SPC" '(counsel-M-x :which-key "Counsel Command")
     "s" '(swiper :which-key "Swiper search")
+    "P" '(counsel-yank-pop :which-key "Kill ring")
 
     ;; Files
     "ff" '(counsel-find-file :which-key "Find file")
@@ -84,9 +86,9 @@
 
     ;; Buffers
     "TAB" '(switch-to-next-buffer :which-key "Next Buffer")
+    "bd" '(kill-this-buffer :which-key "Kill buffer")
     "bfl" '(ibuffer :which-key "Buffer Full List")
     "bl" '(ivy-switch-buffer :which-key "List Buffers")
-    "bd" '(kill-this-buffer :which-key "Kill Buffer")
 
     ;; Windows
     "wh" '(split-window-horizontally :which-key "Split horizontal")
@@ -137,7 +139,6 @@
 
 ;; Git
 (use-package magit :ensure t)
-
 (use-package evil-magit :ensure t)
 
 ;; Auto-generated
@@ -149,7 +150,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
     (rainbow-delimiters counsel-projectile smart-mode-line evil-magit company magit counsel ivy which-key use-package try smooth-scrolling org-bullets hc-zenburn-theme gruvbox-theme general evil-escape)))
