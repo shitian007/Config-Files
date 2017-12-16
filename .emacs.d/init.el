@@ -1,8 +1,8 @@
 ;; General settings
 (tool-bar-mode -1) ; Remove top toolbar
 (toggle-scroll-bar -1) ; Remove scrollbar
-(desktop-save-mode 1) ; Save session
 (global-linum-mode 1) ; Global linum mode
+(desktop-save-mode 1) ; Save session
 (setq inhibit-startup-message 1) ; Inhibit startup message
 (setq initial-scratch-message "Scratch Buffer") ; print a default message in t
 (setq show-trailing-whitespace t) ; Highlight trailing whitespace
@@ -21,6 +21,7 @@
 ;; Appearance
 (use-package smart-mode-line :ensure t
   :config
+  (sml/setup)
   (setq sml/theme 'respectful)
   )
 (use-package rainbow-delimiters :ensure t
@@ -43,7 +44,7 @@
 
 (use-package smooth-scrolling :ensure t
   :config
-    (smooth-scrolling-mode 1))
+  (smooth-scrolling-mode 1))
 
 ;; Evil
 (use-package evil :ensure t
@@ -78,6 +79,7 @@
     "fe" '(eval-buffer :which-key "Evaluate file")
     "fs" '(save-buffer :which-key "Save current")
     "fS" '(save-some-buffers :which-key "Save all")
+    "ft" '(treemacs-toggle :which-key "Treemacs")
 
     ;; Indentation and Commenting
     "cl" '(comment-line :which-key "comment line")
@@ -126,9 +128,15 @@
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer)
   (setq ivy-virtual-abbreviate 'full ivy-rich-switch-buffer-align-virtual-buffer t))
 
-;; Projectile
+;; Navigation
 (use-package projectile :ensure t)
 (use-package counsel-projectile :ensure t)
+(use-package treemacs :ensure t
+  :config
+  (setq treemacs-never-persist t)
+  )
+
+(use-package treemacs-evil :ensure t)
 
 ;; Autocompletion
 (use-package company :ensure t
