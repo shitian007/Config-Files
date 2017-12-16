@@ -31,9 +31,13 @@
 (use-package which-key :ensure t
   :config
   (which-key-add-key-based-replacements
+    "SPC c" "COMMENT"
+    "SPC i" "INDENT"
     "SPC f" "FILES"
     "SPC b" "BUFFERS"
-    "SPC w" "WINDOWS")
+    "SPC w" "WINDOWS"
+    "SPC p" "PROJECTILE"
+    "SPC g" "GIT")
   (which-key-mode 1))
 
 (use-package smooth-scrolling :ensure t
@@ -64,7 +68,7 @@
    :non-normal-prefix "C-SPC"
 
     ;; basic
-    "SPC" '(counsel-M-x :which-key "Meta-X")
+    "SPC" '(counsel-M-x :which-key "Counsel Command")
     "s" '(swiper :which-key "Swiper search")
 
     ;; Files
@@ -80,7 +84,7 @@
 
     ;; Buffers
     "TAB" '(switch-to-next-buffer :which-key "Next Buffer")
-    "bfl" '(list-buffers :which-key "Buffer Full List")
+    "bfl" '(ibuffer :which-key "Buffer Full List")
     "bl" '(ivy-switch-buffer :which-key "List Buffers")
     "bd" '(kill-this-buffer :which-key "Kill Buffer")
 
@@ -92,6 +96,13 @@
     "j"  '(windmove-down :which-key "Switch Down")
     "h"  '(windmove-left :which-key "Switch Left")
     "l"  '(windmove-right :which-key "Switch Right")
+
+    ;; Projectile
+    "pb" '(projectile-ibuffer :which-key "Project buffers")
+    "pp" '(counsel-projectile-switch-project :which-key "Switch project")
+    "pf" '(counsel-projectile-find-file :which-key "Project file")
+    "pd" '(counsel-projectile-find-dir :which-key "Project dir")
+    "ps" '(counsel-projectile-ag :which-key "Project ag")
 
     ;; Git
     "gs" '(magit :which-key "magit")
@@ -112,6 +123,10 @@
   :config
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer)
   (setq ivy-virtual-abbreviate 'full ivy-rich-switch-buffer-align-virtual-buffer t))
+
+;; Projectile
+(use-package projectile :ensure t)
+(use-package counsel-projectile :ensure t)
 
 ;; Autocompletion
 (use-package company :ensure t
@@ -137,7 +152,9 @@
     ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
-    (smart-mode-line evil-magit company magit counsel ivy which-key use-package try smooth-scrolling org-bullets hc-zenburn-theme gruvbox-theme general evil-escape))))
+    (rainbow-delimiters counsel-projectile smart-mode-line evil-magit company magit counsel ivy which-key use-package try smooth-scrolling org-bullets hc-zenburn-theme gruvbox-theme general evil-escape)))
+ '(projectile-mode t nil (projectile))
+ '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
