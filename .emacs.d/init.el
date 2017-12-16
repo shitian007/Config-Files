@@ -4,6 +4,7 @@
 (tool-bar-mode -1) ; Remove top toolbar
 (toggle-scroll-bar -1) ; Remove scrollbar
 (global-linum-mode 1) ; global linum mode
+(show-paren-mode 1) ; Matching braces
 
 ;; Package setup
 (require 'package)
@@ -21,6 +22,8 @@
   (sml/setup)
   (setq sml/theme 'respectful)
   )
+(use-package rainbow-delimiters :ensure t
+  :config (rainbow-delimiters-mode 1))
 ;; (load-theme 'hc-zenburn 1)
 (load-theme 'gruvbox 1)
 
