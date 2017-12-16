@@ -15,11 +15,14 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Themes
+;; Appearance
+(use-package smart-mode-line :ensure t
+  :config
+  (sml/setup)
+  (setq sml/theme 'respectful)
+  )
 ;; (load-theme 'hc-zenburn 1)
 (load-theme 'gruvbox 1)
-
-;; Productivity Packages
 
 ;; Misc
 (use-package which-key :ensure t
@@ -100,9 +103,12 @@
 	)
   (ivy-mode 1))
 
-(use-package counsel :ensure t
+(use-package counsel :ensure t)
+
+(use-package ivy-rich :ensure t
   :config
-  )
+  (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer)
+  (setq ivy-virtual-abbreviate 'full ivy-rich-switch-buffer-align-virtual-buffer t))
 
 ;; Autocompletion
 (use-package company :ensure t
@@ -123,9 +129,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
-    (evil-magit company magit counsel ivy which-key use-package try smooth-scrolling org-bullets hc-zenburn-theme gruvbox-theme general evil-escape))))
+    (smart-mode-line evil-magit company magit counsel ivy which-key use-package try smooth-scrolling org-bullets hc-zenburn-theme gruvbox-theme general evil-escape))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
