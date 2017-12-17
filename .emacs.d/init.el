@@ -1,10 +1,16 @@
-;; General settings
+;;;; package --- Emacs configuration file
+;;; Commentary:
+;;; Code:
+
 (tool-bar-mode -1) ; Remove top toolbar
 (toggle-scroll-bar -1) ; Remove scrollbar
 (global-linum-mode 1) ; Global linum mode
 (desktop-save-mode 1) ; Save session
-(setq inhibit-startup-message 1) ; Inhibit startup message
-(setq initial-scratch-message "Scratch Buffer") ; print a default message in t
+
+;; Removes *messages* from the buffer.
+(setq message-log-max nil)
+(kill-buffer "*Messages*")
+
 (setq show-trailing-whitespace t) ; Highlight trailing whitespace
 (setq save-interprogram-paste-before-kill t) ; Save clipboard content to kill-ring
 
