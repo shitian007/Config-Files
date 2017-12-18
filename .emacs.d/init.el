@@ -83,9 +83,10 @@
 
    ;; basic
    "SPC" '(counsel-M-x :which-key "Counsel Command")
-   "s" '(swiper :which-key "Swiper search")
+   "ss" '(swiper :which-key "Swiper search")
    "rr" '(counsel-yank-pop :which-key "Kill ring")
    "re" '(counsel-evil-registers :which-key "Evil Registers")
+   "U" '(undo-tree-visualize :which-key "Undo Tree")
 
    ;; Files
    "ff" '(counsel-find-file :which-key "Find file")
@@ -102,7 +103,7 @@
    ;; Buffers
    "bn" '(switch-to-next-buffer :which-key "Next Buffer")
    "bp" '(switch-to-prev-buffer :which-key "Prev Buffer")
-   "bd" '(kill-this-buffer :which-key "Kill buffer")
+   "bd" '(kill-this-buffer :which-key "Kill this buffer")
    "bfl" '(ibuffer :which-key "Buffer Full List")
    "bl" '(ivy-switch-buffer :which-key "List Buffers")
 
@@ -110,6 +111,7 @@
    "wh" '(split-window-horizontally :which-key "Split horizontal")
    "wv" '(split-window-vertically :which-key "Split vertical")
    "wd" '(delete-window :which-key "Delete Window")
+   "wo" '(delete-other-windows :which-key "Delete Other Windows")
    "h"  '(windmove-left :which-key "Switch Left")
    "j"  '(windmove-down :which-key "Switch Down")
    "k"  '(windmove-up :which-key "Switch Up")
