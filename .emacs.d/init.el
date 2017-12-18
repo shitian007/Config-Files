@@ -134,9 +134,7 @@
 
    ))
 
-;;
 ;; abo-abo awesomeness
-;;
 (use-package ivy :ensure t
   :init (ivy-mode)
   :config
@@ -151,9 +149,12 @@
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer)
   (setq ivy-virtual-abbreviate 'full ivy-rich-switch-buffer-align-virtual-buffer t))
 
-;;
+(use-package swiper :ensure t
+  :config
+  (define-key ivy-minibuffer-map (kbd "C-r") 'swiper-query-replace) ; remap replace
+  )
+
 ;; Navigation
-;;
 (use-package projectile :ensure t)
 (use-package counsel-projectile :ensure t)
 
@@ -163,9 +164,7 @@
 
 (use-package treemacs-evil :ensure t)
 
-;;
 ;; Autocompletion and Syntax checking
-;;
 (use-package company :ensure t
   :init (global-company-mode)
   :config
