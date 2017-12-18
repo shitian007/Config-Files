@@ -4,8 +4,9 @@
 
 (tool-bar-mode -1) ; Remove top toolbar
 (toggle-scroll-bar -1) ; Remove scrollbar
-(global-linum-mode 1) ; Global linum mode
 (desktop-save-mode 1) ; Save session
+(add-hook 'prog-mode-hook 'linum-mode) ; Line numbers for programming modes
+(show-paren-mode) ; Match parenthesis under cursor
 
 ;; Removes *messages* from the buffer.
 (setq message-log-max nil)
