@@ -24,21 +24,20 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;;
 ;; Appearance
-;;
-(use-package smart-mode-line :ensure t
-  :init (sml/setup)
-  :config (setq sml/theme 'respectful))
 
 ;; (load-theme 'hc-zenburn 1)
 ;; (load-theme 'spacemacs-dark 1)
-;; (load-theme 'wombat 1)
 (load-theme 'gruvbox 1)
+;; (load-theme 'wombat 1)
 
-;;
+(use-package smart-mode-line :ensure t
+  :init
+  (setq sml/no-confirm-load-theme t)
+  (setq sml/theme 'dark)
+  (sml/setup))
+
 ;; Misc
-;;
 (use-package which-key :ensure t
   :init (which-key-mode)
   :config
@@ -55,24 +54,17 @@
 (use-package smooth-scrolling :ensure t
   :init (smooth-scrolling-mode))
 
-(use-package smartparens :ensure t
-  :init (smartparens-global-mode))
-
-;; Loads same $PATH as with shell
 (use-package exec-path-from-shell :ensure t
   :config (exec-path-from-shell-initialize))
 
-;;
 ;; Evil
-;;
 (use-package evil :ensure t
   :init
   (setq evil-want-C-u-scroll t) ; Override C-u to scroll up
   (evil-mode)
   :config
   (setq evil-insert-state-map nil) ; Emacs controls in insert mode
-  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes)) ; Evil in Ibuffer mode
-  )
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))) ; Evil in Ibuffer mode
 
 (use-package evil-escape :ensure t
   :init (evil-escape-mode)
@@ -81,9 +73,7 @@
   (setq evil-escape-excluded-major-modes '(dired-mode))
   (setq-default evil-escape-key-sequence "fd"))
 
-;;
 ;; General kbd
-;;
 (use-package general :ensure t
   :config
   (general-define-key
