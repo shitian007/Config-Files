@@ -190,34 +190,37 @@
 
 (use-package yasnippet :ensure t
   :config (yas-global-mode))
+
 (use-package yasnippet-snippets :ensure t)
 
 ;; Git
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
 
+;; Org and PDF
+(use-package org-bullets :ensure t
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package pdf-tools :ensure t)
+
 ;; Custom language specific settings
 
 ;; Python: Use ipython repl instead of python
 (setq python-shell-interpreter "ipython")
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "858a353233c58b69dbe3a06087fc08905df2d8755a0921ad4c407865f17ab52f" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
-    (smartparens exec-path-from-shell jedi flycheck counsel-projectile smart-mode-line evil-magit company magit counsel ivy which-key use-package smooth-scrolling org-bullets hc-zenburn-theme gruvbox-theme spacemacs-theme general evil-escape)))
- '(projectile-mode t nil (projectile))
- '(show-paren-mode t))
+    (org-bullets yasnippet-snippets which-key use-package treemacs-evil smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools jedi ivy-rich gruvbox-theme general flycheck exec-path-from-shell evil-magit evil-escape counsel-projectile company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:inherit nil :stipple nil :background "#282828" :foreground "#fdf4c1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco")))))
+
+;;; init.el ends here
