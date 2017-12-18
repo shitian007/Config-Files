@@ -49,6 +49,7 @@
     "SPC c" "COMMENT"
     "SPC i" "INDENT"
     "SPC r" "REGISTERS"
+    "SPC t" "TOGGLES"
     "SPC f" "FILES"
     "SPC b" "BUFFERS"
     "SPC w" "WINDOWS"
@@ -85,16 +86,20 @@
    :prefix "SPC"
    :non-normal-prefix "C-SPC"
 
-   ;; basic
+   ;; Misc.
    "SPC" '(counsel-M-x :which-key "Counsel Command")
    "ss" '(swiper :which-key "Swiper search")
    "rr" '(counsel-yank-pop :which-key "Kill ring")
    "re" '(counsel-evil-registers :which-key "Evil Registers")
    "U" '(undo-tree-visualize :which-key "Undo Tree")
 
+   ;; Toggles
+   "tt" '(toggle-truncate-lines :which-key "Toggle truncate lines")
+
    ;; Files
    "ff" '(counsel-find-file :which-key "Find file")
    "fe" '(eval-buffer :which-key "Evaluate file")
+   "fr" '(revert-buffer :which-key "Reload buffer")
    "fs" '(save-buffer :which-key "Save current")
    "fS" '(save-some-buffers :which-key "Save all")
    "ft" '(treemacs-toggle :which-key "Treemacs")
