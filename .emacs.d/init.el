@@ -34,9 +34,12 @@
 
 (use-package smart-mode-line :ensure t
   :init
-  (setq sml/no-confirm-load-theme t)
+  (setq sml/no-confirm-load-theme t) ; Do not show confirmation message
+  (sml/setup)
+  :config
   (setq sml/theme 'dark)
-  (sml/setup))
+  (add-to-list 'mode-line-front-space '("" (:eval (format "%s " (line-number-at-pos (point-max)))))) ; Show total number of lines
+  )
 
 ;; Misc
 (use-package which-key :ensure t
