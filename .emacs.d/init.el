@@ -179,13 +179,19 @@
 (use-package flycheck :ensure t
   :init (global-flycheck-mode))
 
-;;
+(use-package yasnippet :ensure t
+  :config (yas-global-mode))
+(use-package yasnippet-snippets :ensure t)
+
 ;; Git
-;;
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
 
-;; Auto-generated
+;; Custom language specific settings
+
+;; Python: Use ipython repl instead of python
+(setq python-shell-interpreter "ipython")
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
