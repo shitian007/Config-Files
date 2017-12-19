@@ -7,6 +7,7 @@
 (desktop-save-mode 1) ; Save session
 (add-hook 'prog-mode-hook 'linum-mode) ; Line numbers for programming modes
 (show-paren-mode) ; Match parenthesis under cursor
+(global-hl-line-mode) ; Soft highlighting on current line
 
 ;; Removes *messages* from the buffer.
 (setq message-log-max nil)
