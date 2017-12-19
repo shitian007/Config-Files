@@ -50,9 +50,8 @@
     "SPC c" "COMMENT"
     "SPC i" "INDENT"
     "SPC r" "REGISTERS"
+    "SPC s" "SEARCH"
     "SPC t" "TOGGLES"
-    "SPC f" "FILES"
-    "SPC b" "BUFFERS"
     "SPC w" "WINDOWS"
     "SPC p" "PROJECTILE"
     "SPC g" "GIT"))
@@ -89,13 +88,17 @@
 
    ;; Misc.
    "SPC" '(counsel-M-x :which-key "Counsel Command")
-   "ss" '(swiper :which-key "Swiper search")
    "rr" '(counsel-yank-pop :which-key "Kill ring")
    "re" '(counsel-evil-registers :which-key "Evil Registers")
    "U" '(undo-tree-visualize :which-key "Undo Tree")
 
    ;; Toggles
    "tt" '(toggle-truncate-lines :which-key "Toggle truncate lines")
+
+   ;; Search
+   "ss" '(swiper :which-key "Swiper search")
+   "sd" '(dumb-jump-go :which-key "Search jump definition")
+   "sb" '(dumb-jump-back :which-key "Search jump back")
 
    ;; Files
    "ff" '(counsel-find-file :which-key "Find file")
