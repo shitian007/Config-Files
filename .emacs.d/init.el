@@ -154,27 +154,24 @@
   (setq ivy-use-virtual-buffers t ; recent files and bookmarks
 	ivy-count-format "%d/%d " ; current/total in collection of prompt
 	))
-
-(use-package counsel :ensure t)
-
-(use-package ivy-rich :ensure t
+(use-package ivy-rich :ensure t ; enriched descriptions within ivy buffers
   :config
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer)
   (setq ivy-virtual-abbreviate 'full ivy-rich-switch-buffer-align-virtual-buffer t))
+(use-package counsel :ensure t)
 
 (use-package swiper :ensure t
   :config
   (define-key ivy-minibuffer-map (kbd "C-r") 'swiper-query-replace) ; remap replace
   )
 
-;; Navigation
+;; File Navigation
 (use-package projectile :ensure t)
 (use-package counsel-projectile :ensure t)
 
 (use-package treemacs :ensure t
   :config
   (setq treemacs-never-persist t))
-
 (use-package treemacs-evil :ensure t)
 
 ;; Autocompletion and Syntax checking
@@ -184,22 +181,26 @@
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
+(use-package flycheck :ensure t
+  :init (global-flycheck-mode))
+
 (use-package jedi :ensure t
   :init
   (add-hook 'python-mode-hook 'jedi:setup)
   (add-hook 'python-mode-hook 'jedi:ac-setup))
 
-(use-package flycheck :ensure t
-  :init (global-flycheck-mode))
-
+;; Snippets and Dumb Jump
 (use-package yasnippet :ensure t
   :config (yas-global-mode))
-
 (use-package yasnippet-snippets :ensure t)
+
+(use-package dumb-jump :ensure t)
 
 ;; Git
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
+(use-package git-gutter :ensure t
+  :init (global-git-gutter-mode))
 
 ;; Org and PDF
 (use-package org-bullets :ensure t
@@ -219,7 +220,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets yasnippet-snippets which-key use-package treemacs-evil smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools jedi ivy-rich gruvbox-theme general flycheck exec-path-from-shell evil-magit evil-escape counsel-projectile company))))
+    (dumb-jump try git-gutter org-bullets yasnippet-snippets which-key use-package treemacs-evil smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools jedi ivy-rich gruvbox-theme general flycheck exec-path-from-shell evil-magit evil-escape counsel-projectile company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
