@@ -182,7 +182,7 @@
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 (use-package flycheck :ensure t
-  :init (global-flycheck-mode))
+  :init (add-hook 'prog-mode-hook 'flycheck-mode))
 
 (use-package jedi :ensure t
   :init
@@ -199,8 +199,8 @@
 ;; Git
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
-(use-package git-gutter :ensure t
-  :init (global-git-gutter-mode))
+(use-package diff-hl :ensure t
+  :init (global-diff-hl-mode))
 
 ;; Org and PDF
 (use-package org-bullets :ensure t
@@ -213,19 +213,20 @@
 ;; Python: Use ipython repl instead of python
 (setq python-shell-interpreter "ipython")
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
+ '(custom-safe-themes
    (quote
-    (dumb-jump try git-gutter org-bullets yasnippet-snippets which-key use-package treemacs-evil smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools jedi ivy-rich gruvbox-theme general flycheck exec-path-from-shell evil-magit evil-escape counsel-projectile company))))
+    ("c63a789fa2c6597da31f73d62b8e7fad52c9420784e6ec34701ae8e8f00071f6" "b67cb8784f6a2d1a3f605e39d2c376937f3bf8460cb8a0d6fc625c0331c00c83" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#282828" :foreground "#fdf4c1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Monaco")))))
 
 ;;; init.el ends here
