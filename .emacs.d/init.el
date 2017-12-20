@@ -184,11 +184,6 @@
 (use-package flycheck :ensure t
   :init (add-hook 'prog-mode-hook 'flycheck-mode))
 
-(use-package jedi :ensure t
-  :init
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook 'jedi:ac-setup))
-
 ;; Snippets and Dumb Jump
 (use-package yasnippet :ensure t
   :config (yas-global-mode))
@@ -208,11 +203,38 @@
 
 (use-package pdf-tools :ensure t)
 
-;; Custom language specific settings
+;; Language specific packages and configurations
 
+;; Python
+(use-package jedi :ensure t
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'jedi:ac-setup))
+(use-package company-jedi :ensure t
+  :init (add-to-list 'company-backends 'company-jedi))
 ;; Python: Use ipython repl instead of python
 (setq python-shell-interpreter "ipython")
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+
+;; Javascript
+(use-package js2-mode :ensure t
+  :config (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+(use-package web-mode :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+(use-package tern :ensure t
+  :config
+  (add-hook 'js2-mode-hook 'tern-mode)
+  (add-hook 'web-mode-hook 'tern-mode))
+(use-package company-tern :ensure t
+  :init (add-to-list 'company-backends 'company-tern))
+
+(setq js-indent-level 2)
+
+;; Custom variables
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -221,7 +243,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("c63a789fa2c6597da31f73d62b8e7fad52c9420784e6ec34701ae8e8f00071f6" "b67cb8784f6a2d1a3f605e39d2c376937f3bf8460cb8a0d6fc625c0331c00c83" default))))
+    ("c63a789fa2c6597da31f73d62b8e7fad52c9420784e6ec34701ae8e8f00071f6" "b67cb8784f6a2d1a3f605e39d2c376937f3bf8460cb8a0d6fc625c0331c00c83" default)))
+ '(package-selected-packages
+   (quote
+    (company-jedi company-tern js2-mode web-mode yasnippet-snippets which-key use-package try treemacs-evil spacemacs-theme smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools org-bullets jedi ivy-rich gruvbox-theme git-gutter-fringe git-gutter-fringe+ general flycheck exec-path-from-shell evil-magit evil-escape dumb-jump diff-hl counsel-projectile company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
