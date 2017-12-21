@@ -62,6 +62,9 @@
 (use-package exec-path-from-shell :ensure t
   :config (exec-path-from-shell-initialize))
 
+(use-package smartparens :ensure t
+  :init (smartparens-global-mode))
+
 ;; Evil
 (use-package evil :ensure t
   :init
