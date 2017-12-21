@@ -228,12 +228,21 @@
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2))
+
 (use-package tern :ensure t
   :config
   (add-hook 'js2-mode-hook 'tern-mode)
   (add-hook 'web-mode-hook 'tern-mode))
 (use-package company-tern :ensure t
   :init (add-to-list 'company-backends 'company-tern))
+
+;; Definition
+(use-package indium :ensure t
+  :commands (indium-interaction-mode indium-eval-buffer)
+  :bind (
+	 :map indium-interaction-mode-map
+	      ("C-c e" . indium-eval-buffer))
+  )
 
 (setq js-indent-level 2)
 
@@ -249,7 +258,7 @@
     ("c63a789fa2c6597da31f73d62b8e7fad52c9420784e6ec34701ae8e8f00071f6" "b67cb8784f6a2d1a3f605e39d2c376937f3bf8460cb8a0d6fc625c0331c00c83" default)))
  '(package-selected-packages
    (quote
-    (company-jedi company-tern js2-mode web-mode yasnippet-snippets which-key use-package try treemacs-evil spacemacs-theme smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools org-bullets jedi ivy-rich gruvbox-theme git-gutter-fringe git-gutter-fringe+ general flycheck exec-path-from-shell evil-magit evil-escape dumb-jump diff-hl counsel-projectile company))))
+    (indium js-comint company-jedi company-tern js2-mode web-mode yasnippet-snippets which-key use-package try treemacs-evil spacemacs-theme smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools org-bullets jedi ivy-rich gruvbox-theme git-gutter-fringe git-gutter-fringe+ general flycheck exec-path-from-shell evil-magit evil-escape dumb-jump diff-hl counsel-projectile company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
