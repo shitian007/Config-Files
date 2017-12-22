@@ -206,6 +206,8 @@
 
 (use-package pdf-tools :ensure t)
 
+(setq org-src-fontify-natively t) ; Enable syntax highlighting within src block
+
 ;; Language specific packages and configurations
 
 ;; Python
