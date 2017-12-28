@@ -238,6 +238,12 @@
 (use-package company-tern :ensure t
   :init (add-to-list 'company-backends 'company-tern))
 
+(use-package emmet-mode :ensure t
+  :config
+  (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+  (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+  )
+
 ;; JS Evaluation
 (use-package indium :ensure t
   :commands (indium-interaction-mode indium-eval-buffer)
@@ -260,12 +266,12 @@
     ("c63a789fa2c6597da31f73d62b8e7fad52c9420784e6ec34701ae8e8f00071f6" "b67cb8784f6a2d1a3f605e39d2c376937f3bf8460cb8a0d6fc625c0331c00c83" default)))
  '(package-selected-packages
    (quote
-    (indium js-comint company-jedi company-tern js2-mode web-mode yasnippet-snippets which-key use-package try treemacs-evil spacemacs-theme smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools org-bullets jedi ivy-rich gruvbox-theme git-gutter-fringe git-gutter-fringe+ general flycheck exec-path-from-shell evil-magit evil-escape dumb-jump diff-hl counsel-projectile company))))
+    (emmet-mode emmet golden-ratio indium js-comint company-jedi company-tern js2-mode web-mode yasnippet-snippets which-key use-package try treemacs-evil spacemacs-theme smooth-scrolling smartparens smart-mode-line-powerline-theme pdf-tools org-bullets jedi ivy-rich gruvbox-theme git-gutter-fringe git-gutter-fringe+ general flycheck exec-path-from-shell evil-magit evil-escape dumb-jump diff-hl counsel-projectile company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "nil" :family "Monaco")))))
 
 ;;; init.el ends here
