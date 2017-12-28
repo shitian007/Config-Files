@@ -5,9 +5,13 @@
 (tool-bar-mode -1) ; Remove top toolbar
 (toggle-scroll-bar -1) ; Remove scrollbar
 (desktop-save-mode 1) ; Save session
-(add-hook 'prog-mode-hook 'linum-mode) ; Line numbers for programming modes
 (show-paren-mode) ; Match parenthesis under cursor
 (global-hl-line-mode) ; Soft highlighting on current line
+
+;; Mode specific settings
+(add-hook 'prog-mode-hook 'linum-mode) ; Line numbers for programming modes
+(add-hook 'markdown-mode-hook 'linum-mode) ; Line numbers for programming modes
+(add-hook 'prog-mode-hook 'electric-pair-mode) ; Newline and autoindent upon RET after braces
 
 ;; Removes *messages* from the buffer.
 (setq message-log-max nil)
