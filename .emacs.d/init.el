@@ -51,14 +51,16 @@
   :init (which-key-mode)
   :config
   (which-key-add-key-based-replacements
+    "SPC b" "BUFFERS"
     "SPC c" "COMMENT"
+    "SPC f" "FILES"
+    "SPC g" "GIT"
     "SPC i" "INDENT"
+    "SPC p" "PROJECTILE"
     "SPC r" "REGISTERS"
     "SPC s" "SEARCH"
     "SPC t" "TOGGLES"
-    "SPC w" "WINDOWS"
-    "SPC p" "PROJECTILE"
-    "SPC g" "GIT"))
+    "SPC w" "WINDOWS"))
 
 (use-package smooth-scrolling :ensure t
   :init (smooth-scrolling-mode))
