@@ -228,9 +228,11 @@
 ;; Front-End Dev
 (use-package js2-mode :ensure t
   :config (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+
 (use-package web-mode :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2))
