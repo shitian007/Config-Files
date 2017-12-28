@@ -9,9 +9,10 @@
 (global-hl-line-mode) ; Soft highlighting on current line
 
 ;; Mode specific settings
-(add-hook 'prog-mode-hook 'linum-mode) ; Line numbers for programming modes
-(add-hook 'markdown-mode-hook 'linum-mode) ; Line numbers for programming modes
-(add-hook 'prog-mode-hook 'electric-pair-mode) ; Newline and autoindent upon RET after braces
+(add-hook 'prog-mode-hook 'linum-mode) ; Line numbers
+(add-hook 'markdown-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'electric-pair-mode) ; Autopairing, newline and autoindent upon RET after braces
+(add-hook 'markdown-mode-hook 'electric-pair-mode)
 
 ;; Removes *messages* from the buffer.
 (setq message-log-max nil)
@@ -67,9 +68,6 @@
 
 (use-package exec-path-from-shell :ensure t
   :config (exec-path-from-shell-initialize))
-
-(use-package smartparens :ensure t
-  :init (smartparens-global-mode))
 
 ;; Evil
 (use-package evil :ensure t
