@@ -221,7 +221,7 @@
 (setq python-shell-interpreter "ipython")
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 
-;; Javascript
+;; Front-End Dev
 (use-package js2-mode :ensure t
   :config (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
 (use-package web-mode :ensure t
@@ -238,7 +238,7 @@
 (use-package company-tern :ensure t
   :init (add-to-list 'company-backends 'company-tern))
 
-;; Definition
+;; JS Evaluation
 (use-package indium :ensure t
   :commands (indium-interaction-mode indium-eval-buffer)
   :bind (
