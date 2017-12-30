@@ -173,7 +173,8 @@
   )
 
 ;; File Navigation
-(use-package projectile :ensure t)
+(use-package projectile :ensure t
+  :init (projectile-global-mode))
 (use-package counsel-projectile :ensure t)
 
 (use-package treemacs :ensure t
