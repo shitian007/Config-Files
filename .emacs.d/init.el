@@ -66,6 +66,9 @@
 (use-package smooth-scrolling :ensure t
   :init (smooth-scrolling-mode))
 
+(use-package golden-ratio :ensure t
+  :config (golden-ratio-mode))
+
 (use-package exec-path-from-shell :ensure t
   :config (exec-path-from-shell-initialize))
 
