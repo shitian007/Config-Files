@@ -79,7 +79,13 @@
   (evil-mode)
   :config
   (setq evil-insert-state-map nil) ; Emacs controls in insert mode
-  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))) ; Evil in Ibuffer mode
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes)) ; Evil in Ibuffer mode
+  (evil-define-key 'normal pdf-view-mode-map
+  "h" 'pdf-view-previous-page-command
+  "j" (lambda () (interactive) (pdf-view-next-line-or-next-page 5))
+  "k" (lambda () (interactive) (pdf-view-previous-line-or-previous-page 5))
+  "l" 'pdf-view-next-page-command))
+
 
 (use-package evil-escape :ensure t
   :init (evil-escape-mode)
