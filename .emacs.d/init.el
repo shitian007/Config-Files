@@ -218,7 +218,9 @@
 (use-package org-bullets :ensure t
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(use-package pdf-tools :ensure t)
+(use-package pdf-tools :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode)))
 
 (setq org-src-fontify-natively t) ; Enable syntax highlighting within src block
 
