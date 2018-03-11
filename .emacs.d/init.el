@@ -20,6 +20,7 @@
 
 (setq show-trailing-whitespace t) ; Highlight trailing whitespace
 (setq save-interprogram-paste-before-kill t) ; Save clipboard content to kill-ring
+(setq backup-directory-alist `(("." . "~/.saves"))) ; Save tilde under a single default folder
 
 ;; Package setup
 (require 'package)
