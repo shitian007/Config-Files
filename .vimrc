@@ -38,8 +38,6 @@ Plugin 'HerringtonDarkholme/yats.vim'
 " Python
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'hdima/python-syntax'
-" Latex
-Plugin 'lervag/vimtex' "Latexmk required | Make sure content present before autocompile
 
 
 " All of your Plugins must be added before the following line
