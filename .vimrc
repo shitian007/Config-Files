@@ -16,7 +16,6 @@ call vundle#begin()
 " Plugins with Vundle
 Plugin 'gmarik/Vundle.vim'
 " General
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ntpeters/vim-better-whitespace'
