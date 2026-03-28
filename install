@@ -5,7 +5,8 @@
 
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <component>"
-    echo "  vim - Install the Vim RC file"
+    echo "  vim - Install Vim RC file with Vundle and plugins"
+    echo "  zsh - Install Zsh and Oh My Zsh"
     exit 1
 fi
 
@@ -51,9 +52,53 @@ case "$COMPONENT" in
             echo "⚠ Warning: Vim plugin installation completed with warnings (see above)"
         fi
         ;;
+    zsh)
+        echo "Installing Zsh and Oh My Zsh..."
+        
+        # Check if zsh is installed, if not install it
+        if ! command -v zsh &> /dev/null; then
+            echo "Installing Zsh..."
+            if command -v apt-get &> /dev/null; then
+                sudo apt-get update && sudo apt-get install -y zsh
+            elif command -v brew &> /dev/null; then
+                brew install zsh
+            elif command -v yum &> /dev/null; then
+                sudo yum install -y zsh
+            else
+                echo "✗ Error: Could not determine package manager to install Zsh"
+                exit 1
+            fi
+            if [ $? -eq 0 ]; then
+                echo "✓ Zsh installed successfully"
+            else
+                echo "✗ Error: Failed to install Zsh"
+                exit 1
+            fi
+        else
+            echo "✓ Zsh is already installed"
+        fi
+        
+        # Install Oh My Zsh
+        OMZ_DIR="$HOME/.oh-my-zsh"
+        if [ ! -d "$OMZ_DIR" ]; then
+            echo "Installing Oh My Zsh..."
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+            if [ $? -eq 0 ]; then
+                echo "✓ Oh My Zsh installed to $OMZ_DIR"
+            else
+                echo "✗ Error: Failed to install Oh My Zsh"
+                exit 1
+            fi
+        else
+            echo "✓ Oh My Zsh is already installed"
+        fi
+        
+        echo "✓ Zsh setup complete!"
+        echo "Note: You may need to restart your terminal or run 'exec zsh' to switch shells"
+        ;;
     *)
         echo "Error: Unknown component '$COMPONENT'"
-        echo "Supported components: vim"
+        echo "Supported components: vim, zsh"
         exit 1
         ;;
 esac
