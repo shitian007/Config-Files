@@ -14,6 +14,25 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 case "$COMPONENT" in
     vim)
+        echo "Installing Vim dependencies..."
+        
+        # Install Vundle
+        VUNDLE_DIR="$HOME/.vim/bundle/Vundle.vim"
+        if [ ! -d "$VUNDLE_DIR" ]; then
+            echo "Installing Vundle plugin manager..."
+            mkdir -p "$HOME/.vim/bundle"
+            git clone https://github.com/VundleVim/Vundle.vim.git "$VUNDLE_DIR"
+            if [ $? -eq 0 ]; then
+                echo "✓ Vundle installed to $VUNDLE_DIR"
+            else
+                echo "✗ Error: Failed to install Vundle"
+                exit 1
+            fi
+        else
+            echo "✓ Vundle already installed"
+        fi
+        
+        # Install Vim RC file
         echo "Installing Vim RC file..."
         if [ -f "$SCRIPT_DIR/.vimrc" ]; then
             cp "$SCRIPT_DIR/.vimrc" ~/.vimrc
@@ -21,6 +40,15 @@ case "$COMPONENT" in
         else
             echo "✗ Error: .vimrc file not found in repository"
             exit 1
+        fi
+        
+        # Install plugins via Vundle
+        echo "Installing Vim plugins (this may take a moment)..."
+        vim +PluginInstall +qall
+        if [ $? -eq 0 ]; then
+            echo "✓ Vim plugins installed successfully"
+        else
+            echo "⚠ Warning: Vim plugin installation completed with warnings (see above)"
         fi
         ;;
     *)
