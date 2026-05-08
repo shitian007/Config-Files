@@ -5,15 +5,58 @@
 
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <component>"
-    echo "  vim - Install Vim RC file with Vundle and plugins"
-    echo "  zsh - Install Zsh and Oh My Zsh"
+    echo "  nvim - Install Neovim with plugins, LSP servers, and formatters"
+    echo "  vim  - Install Vim RC file with Vundle and plugins"
+    echo "  zsh  - Install Zsh and Oh My Zsh"
     exit 1
 fi
 
 COMPONENT=$1
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+install_pkg() {
+    if command -v apt-get &>/dev/null; then
+        sudo apt-get install -y "$1"
+    elif command -v brew &>/dev/null; then
+        brew install "$1"
+    elif command -v yum &>/dev/null; then
+        sudo yum install -y "$1"
+    else
+        echo "✗ Error: No supported package manager found (apt, brew, yum)"
+        exit 1
+    fi
+}
+
 case "$COMPONENT" in
+    nvim)
+        echo "Installing Neovim config..."
+
+        command -v nvim &>/dev/null  || install_pkg neovim
+        echo "✓ Neovim installed"
+
+        command -v fzf &>/dev/null   || install_pkg fzf
+        echo "✓ fzf installed"
+
+        command -v rg &>/dev/null    || install_pkg ripgrep
+        echo "✓ ripgrep installed"
+
+        # Symlink config
+        mkdir -p ~/.config
+        if [ -e ~/.config/nvim ] && [ "$(realpath ~/.config/nvim)" != "$SCRIPT_DIR/nvim" ]; then
+            mv ~/.config/nvim ~/.config/nvim.bak
+            echo "✓ Backed up existing config to ~/.config/nvim.bak"
+        fi
+        if [ ! -e ~/.config/nvim ]; then
+            ln -s "$SCRIPT_DIR/nvim" ~/.config/nvim
+            echo "✓ Linked $SCRIPT_DIR/nvim -> ~/.config/nvim"
+        else
+            echo "✓ Config already linked"
+        fi
+
+        echo ""
+        echo "✓ Neovim setup complete!"
+        echo "  Open nvim — Lazy, Mason, and Treesitter will auto-install on first launch."
+        ;;
     vim)
         echo "Installing Vim dependencies..."
         
@@ -58,22 +101,8 @@ case "$COMPONENT" in
         # Check if zsh is installed, if not install it
         if ! command -v zsh &> /dev/null; then
             echo "Installing Zsh..."
-            if command -v apt-get &> /dev/null; then
-                sudo apt-get update && sudo apt-get install -y zsh
-            elif command -v brew &> /dev/null; then
-                brew install zsh
-            elif command -v yum &> /dev/null; then
-                sudo yum install -y zsh
-            else
-                echo "✗ Error: Could not determine package manager to install Zsh"
-                exit 1
-            fi
-            if [ $? -eq 0 ]; then
-                echo "✓ Zsh installed successfully"
-            else
-                echo "✗ Error: Failed to install Zsh"
-                exit 1
-            fi
+            install_pkg zsh
+            echo "✓ Zsh installed successfully"
         else
             echo "✓ Zsh is already installed"
         fi
@@ -98,7 +127,7 @@ case "$COMPONENT" in
         ;;
     *)
         echo "Error: Unknown component '$COMPONENT'"
-        echo "Supported components: vim, zsh"
+        echo "Supported components: nvim, vim, zsh"
         exit 1
         ;;
 esac
