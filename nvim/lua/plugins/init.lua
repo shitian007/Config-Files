@@ -121,8 +121,28 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "cpp" },
+      ensure_installed = {
+        "cpp",
+        "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        "jsonc",
+        "html",
+        "css",
+      },
     },
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "html",
+      "javascriptreact",
+      "typescriptreact",
+      "tsx",
+    },
+    opts = {},
   },
 
   {
