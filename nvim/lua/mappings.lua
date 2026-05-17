@@ -28,7 +28,19 @@ map("n", "<leader>ds", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugge
 
 
 map("n", "gI", vim.lsp.buf.implementation, { desc = "LSP Go to implementation" })
-map("n", "K", function() vim.diagnostic.open_float({cursor_pos = true}) end, { desc = "Open floating diagnostics" })
+map("n", "K", function()
+  local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local diagnostics = vim.diagnostic.get(0, { lnum = line })
+
+  if #diagnostics > 0 then
+    vim.diagnostic.open_float(nil, {
+      scope = "line",
+      focus = false,
+    })
+  else
+    vim.lsp.buf.hover()
+  end
+end, { desc = "Diagnostics if present, otherwise LSP hover" })
 
 -- tabufline move buffers
 nomap("n", "<leader>b")
