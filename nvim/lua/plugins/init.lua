@@ -119,10 +119,19 @@ return {
   },
 
   {
+    "nvim-java/nvim-java",
+    ft = "java",
+    config = function()
+      require("configs.java").setup()
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
         "cpp",
+        "java",
         "javascript",
         "typescript",
         "tsx",
