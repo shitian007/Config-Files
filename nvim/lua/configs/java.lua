@@ -30,6 +30,12 @@ function M.setup()
         configuration = {
           runtimes = runtimes,
         },
+        format = {
+          settings = {
+            url = vim.fn.stdpath("config") .. "/formatters/eclipse-java-formatter.xml",
+            profile = "Custom4Spaces",
+          },
+        },
       },
     },
   })
