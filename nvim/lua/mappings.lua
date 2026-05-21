@@ -7,6 +7,7 @@ local nomap = vim.keymap.del
 
 map("n", "<leader>fw", "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "fzf fuzzy grep" })
 map("n", "<leader>fs", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>", { desc = "fzf workspace symbols" })
+map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "Git diff current file" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "fd", "<ESC>")
 
