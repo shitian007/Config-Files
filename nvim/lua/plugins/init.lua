@@ -119,6 +119,15 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = function(_, opts)
+      opts.renderer = opts.renderer or {}
+      opts.renderer.full_name = true
+      return opts
+    end,
+  },
+
+  {
     "nvim-java/nvim-java",
     ft = "java",
     config = function()
