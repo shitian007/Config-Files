@@ -139,9 +139,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     lazy = false,
-    build = ":TSUpdate",
+    build = ":TSUpdate | TSInstallAll",
     opts = {
       ensure_installed = {
+        "python",
         "markdown",
         "markdown_inline",
         "cpp",
